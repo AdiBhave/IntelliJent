@@ -95,9 +95,9 @@ public class MusicService extends Service implements
         startForeground(NOTIFY_ID, not);*/
 
 
-        Intent intent = new Intent(this, SongList.class);
+        /*Intent intent = new Intent(this, SongList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code , intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
 
@@ -111,7 +111,9 @@ public class MusicService extends Service implements
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        notificationManager.notify(0 /* ID of notification , notificationBuilder.build());
+    */
+
     }
 
     @Override
