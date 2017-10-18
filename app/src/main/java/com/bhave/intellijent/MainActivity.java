@@ -1,6 +1,9 @@
 package com.bhave.intellijent;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +19,16 @@ import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import java.util.Map;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView info;
     private LoginButton loginButton;
+
+    SharedPreferences sp;
+    SharedPreferences.Editor spe;
 
     private CallbackManager callbackManager;
 
@@ -34,9 +43,15 @@ public class MainActivity extends AppCompatActivity {
         info = (TextView)findViewById(R.id.info);
         loginButton = (LoginButton)findViewById(R.id.login_button);
 
+        sp = getSharedPreferences("userInfo", Context.MODE_APPEND);
+        spe = sp.edit();
+
+
         if(Profile.getCurrentProfile() == null){
             Toast.makeText(this,"Please login for further use",Toast.LENGTH_SHORT);
         }
+
+
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -49,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                                 "Auth Token: "
                                 + loginResult.getAccessToken().getToken()
                 );
+                Profile p = Profile.getCurrentProfile();
+                spe.putString("email",p.getId());
+                spe.commit();
             }
 
             @Override

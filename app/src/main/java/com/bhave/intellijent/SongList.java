@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -62,9 +63,13 @@ public class SongList extends AppCompatActivity
         SongAdapter x = new SongAdapter(this,songList);
         songView.setAdapter(x);
 
+
+
         songView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
                 musicSrv.setSong(Integer.parseInt(view.getTag().toString()));
                 musicSrv.playSong();
                 if(playbackPaused){
@@ -73,7 +78,20 @@ public class SongList extends AppCompatActivity
                 }
                 controller.show(0);
 
+                Intent intent = new Intent(SongList.this, DataSender.class);
+                Song y = (Song) adapterView.getSelectedItem();
+
+                intent.putExtra("name",y.getTitle());
+                intent.putExtra("artist",y.getArtist());
+                intent.putExtra("album",y.getAlbum());
+
+                startActivity(intent);
+
+
+
                 // Need to add code here to push the recommendation
+
+
             }
         });
 

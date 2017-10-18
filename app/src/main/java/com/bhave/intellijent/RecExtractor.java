@@ -50,7 +50,7 @@ public class RecExtractor {
         try {
 
             JSONObject root  = new JSONObject(jsonResponse);
-            JSONArray tags = root.getJSONArray("PG_August");
+            JSONArray tags = root.getJSONArray("");
 
             for (int i = 0; i < tags.length(); i++) {
                 JSONObject row = tags.getJSONObject(i);
