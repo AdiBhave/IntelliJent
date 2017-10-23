@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.MediaController;
@@ -44,8 +45,8 @@ public class SongList extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
 
@@ -65,6 +66,7 @@ public class SongList extends AppCompatActivity
 
 
 
+
         songView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -79,7 +81,10 @@ public class SongList extends AppCompatActivity
                 controller.show(0);
 
                 Intent intent = new Intent(SongList.this, DataSender.class);
-                Song y = (Song) adapterView.getSelectedItem();
+
+
+
+                Song y = songList.get(i);
 
                 intent.putExtra("name",y.getTitle());
                 intent.putExtra("artist",y.getArtist());

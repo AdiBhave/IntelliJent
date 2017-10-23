@@ -4,7 +4,9 @@ import android.app.LoaderManager;
 import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Recommendations extends AppCompatActivity implements LoaderManager.
     private ArrayList<Song> songList;
     private ListView songView;
     private SongAdapter x;
+    private ProgressBar pb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +24,7 @@ public class Recommendations extends AppCompatActivity implements LoaderManager.
 
         songView = (ListView)findViewById(R.id.recList);
         songList = new ArrayList<Song>();
-
+        pb = (ProgressBar) findViewById(R.id.recPb);
 
 
 
@@ -38,6 +41,8 @@ public class Recommendations extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<List<Song>> loader, List<Song> songs) {
+        pb.setVisibility(View.GONE);
+        songList.addAll(songs);
         x = new SongAdapter(this,songList);
         songView.setAdapter(x);
     }

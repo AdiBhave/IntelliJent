@@ -4,14 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bhave.intellijent.Recommendations">
-    
+    tools:context="com.bhave.intellijent.Recommendations"
+    android:orientation="vertical">
+
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="231dp"
+        tools:layout_editor_absoluteX="168dp"
+        android:id="@+id/recPb"
+        android:background="@color/colorPrimaryDark"
+        />
+
     <ListView
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/recList"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
     </ListView>
 
-</android.support.constraint.ConstraintLayout>
+
+</>

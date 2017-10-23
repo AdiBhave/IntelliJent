@@ -30,7 +30,7 @@ public class RecExtractor {
 
 
 
-        String HTTP_REQUEST = "test";
+        String HTTP_REQUEST = "http://6f51eb87.ngrok.io/v1.0/get_recommendation";
         URL url = createUrl(HTTP_REQUEST);
 
         if(url == null){return null;}
@@ -50,7 +50,10 @@ public class RecExtractor {
         try {
 
             JSONObject root  = new JSONObject(jsonResponse);
-            JSONArray tags = root.getJSONArray("");
+            JSONArray tags = root.getJSONArray("Songs");
+
+            //JSONArray tags = new JSONArray(jsonResponse)
+            Log.e("Length","length recieved is " + tags.length());
 
             for (int i = 0; i < tags.length(); i++) {
                 JSONObject row = tags.getJSONObject(i);
@@ -60,6 +63,8 @@ public class RecExtractor {
                 String artist = row.getString("Artist");
                 String album = row.getString("Album");
 
+                Log.e("Test",title+" "+album+" "+artist);
+
 
                 ranges.add(new Song(1,title,artist,album));
 
@@ -67,12 +72,14 @@ public class RecExtractor {
 
 
 
+
+
         } catch (JSONException e) {
 
             Log.e("QueryUtils", "Problem parsing the activity JSON results", e);
         }
-        String text =ranges.get(0).toString();
-        Log.i("text",text);
+        //String text =ranges.get(0).toString();
+        //Log.i("text",text);
         // Return the list of Activities
         return ranges;
     }
@@ -98,14 +105,15 @@ public class RecExtractor {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(40000 /* milliseconds */);
+            urlConnection.setConnectTimeout(45000 /* milliseconds */);
             urlConnection.connect();
             if(urlConnection.getResponseCode() == 200){
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             }
             else{
+                Log.e("Url","Problem in URL Connection");
                 return null;
             }
         } catch (IOException e) {
