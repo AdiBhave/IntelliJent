@@ -20,7 +20,7 @@ public class RecLoader extends AsyncTaskLoader<List<Song>> {
 
     @Override
     public List<Song> loadInBackground() {
-        List<Song> list = RecExtractor.extractData();
+        List<Song> list = RecExtractor.extractData(UploadPhotoActivity.mood);
         return list;
     }
 }

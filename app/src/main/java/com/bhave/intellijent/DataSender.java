@@ -190,7 +190,7 @@ public class DataSender extends Activity implements OnClickListener {
                 if(!validate())
                     Toast.makeText(getBaseContext(), "Enter some data!", Toast.LENGTH_LONG).show();
                 // call AsynTask to perform network operation on separate thread
-                new HttpAsyncTask().execute("http://6f51eb87.ngrok.io/v1.0/song");
+                new HttpAsyncTask().execute("http://839e1a35.ngrok.io/v1.0/song");
                 finish();
                 break;
         }

@@ -77,7 +77,7 @@ public class MusicService extends Service implements
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
         mediaPlayer.start();
-        /*Intent notIntent = new Intent(this, MainActivity.class);
+        Intent notIntent = new Intent(this, MainActivity.class);
         notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                 notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -92,12 +92,12 @@ public class MusicService extends Service implements
                 .setContentText(songTitle);
                 Notification not = builder.build();
 
-        startForeground(NOTIFY_ID, not);*/
+        startForeground(NOTIFY_ID, not);
 
 
-        /*Intent intent = new Intent(this, SongList.class);
+        Intent intent = new Intent(this, SongList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code , intent,
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
 
@@ -111,8 +111,8 @@ public class MusicService extends Service implements
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification , notificationBuilder.build());
-    */
+        notificationManager.notify(0 , notificationBuilder.build());
+
 
     }
 

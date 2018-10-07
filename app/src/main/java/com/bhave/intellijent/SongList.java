@@ -80,17 +80,17 @@ public class SongList extends AppCompatActivity
                 }
                 controller.show(0);
 
-                Intent intent = new Intent(SongList.this, DataSender.class);
+//                Intent intent = new Intent(SongList.this, DataSender.class);
 
 
 
                 Song y = songList.get(i);
 
-                intent.putExtra("name",y.getTitle());
-                intent.putExtra("artist",y.getArtist());
-                intent.putExtra("album",y.getAlbum());
+//                intent.putExtra("name",y.getTitle());
+//                intent.putExtra("artist",y.getArtist());
+//                intent.putExtra("album",y.getAlbum());
 
-                startActivity(intent);
+                //startActivity(intent);
 
 
 

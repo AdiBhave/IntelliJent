@@ -25,12 +25,12 @@ public class RecExtractor {
     private RecExtractor() {
     }
 
-    public static List<Song> extractData(){
+    public static List<Song> extractData(String mood){
 
 
 
 
-        String HTTP_REQUEST = "http://6f51eb87.ngrok.io/v1.0/get_recommendation";
+        String HTTP_REQUEST = "http://839e1a35.ngrok.io/v1.0/get_recommendation";
         URL url = createUrl(HTTP_REQUEST);
 
         if(url == null){return null;}
@@ -105,8 +105,8 @@ public class RecExtractor {
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(40000 /* milliseconds */);
-            urlConnection.setConnectTimeout(45000 /* milliseconds */);
+            urlConnection.setReadTimeout(10000000 /* milliseconds */);
+            urlConnection.setConnectTimeout(145000 /* milliseconds */);
             urlConnection.connect();
             if(urlConnection.getResponseCode() == 200){
                 inputStream = urlConnection.getInputStream();

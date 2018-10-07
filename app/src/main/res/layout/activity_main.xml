@@ -33,29 +33,14 @@
             android:onClick="listSongs"/>
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="180dp"
             android:layout_height="40dp"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorAccent"
-            android:text="Get Suggestions"
+            android:text="Generate Suggestions"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:onClick="songRecs"/>
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp" />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info"
-                android:textSize="18sp"
-            />
-
 
 
 </LinearLayout>
